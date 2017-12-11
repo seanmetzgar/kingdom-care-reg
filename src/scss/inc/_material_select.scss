@@ -1,0 +1,54 @@
+/* ==========  Select Field Variables ========== */
+$color-black: "0,0,0";
+$select-background-color: transparent;
+$select-border-color: #757575 !default;
+$select-font-size: 1rem;
+$select-color: #757575 !default;
+$select-padding: 4px;
+
+/* ==========  Select Field ========== */
+
+/* Style Select Field */
+select {
+ 
+}
+
+.md-select {
+    label {
+        display: none;
+    }
+
+    select {
+        font-family: inherit;
+        background-color: transparent;
+        width: 100%;
+        padding: $select-padding 0;
+        font-size: $select-font-size;
+        color: $select-color;
+        border: none;
+        border-bottom: 1px solid $select-border-color;
+
+
+
+        appearance: none;
+        &:focus {
+            outline: none;
+        }
+    }
+    
+    position: relative;
+        &:after {
+            position: absolute;
+            top: 0.75em;
+            right: 0.5em;
+            /* Styling the down arrow */
+            width: 0;
+            height: 0;
+            padding: 0;
+            content: '';
+            border-left: .25em solid transparent;
+            border-right: .25em solid transparent;
+            border-top: .375em solid $select-border-color;
+            pointer-events: none;
+        }
+}

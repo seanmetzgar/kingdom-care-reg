@@ -1,0 +1,283 @@
+.app-view {
+	padding-top: 6rem;
+	display: none;
+
+	box-sizing: border-box;
+
+	&.home-view {
+		width: 100%; height: 100vh;
+		position: relative;
+		overflow: hidden;
+		padding-top: 0;
+
+		.background-photo {
+			position: absolute;
+			top: 0; bottom: 0;
+			left: 0; right: 0;
+
+			display: block;
+			margin: 0; padding: 0;
+
+			z-index: 1;
+			background: url(../img/photos/kc_home_photo.jpg) 50% 50% no-repeat;
+			background-size: cover;
+
+			img { display: none; }
+		}
+
+		.logo-link {
+			max-width: 200px; min-width: 120px;
+			margin: 0 auto 20px;
+			@include aspect-ratio(1000, 340);
+
+			&:after {
+				background-image: url(../img/logos/logo_color.png);
+			}
+		}
+		.content-wrap {
+			position: absolute;
+			top: 0; bottom: 0;
+			left: 0; right: 0;
+			background-color: rgba($brand-white, 0.6);
+			z-index: 2;
+
+			color: $brand-purple;
+
+			transition: background-color 0.25s;
+
+			.content {
+				padding: 15px;
+				box-sizing: border-box;
+
+				margin: 50vh auto 0;
+				transform: translateY(-55%);
+
+				transition: background-color 0.25s;
+			}
+
+			p {
+				text-align: center;
+				margin: 0 auto;
+
+				font-weight: 400;
+
+				&.lead-in {
+					font-family: $font-family-serif;
+					font-size: 1.5rem;
+					font-weight: 600;
+					line-height: 1.25;
+
+					margin: 0 0 1rem;
+				}
+			}
+
+			.btn {
+				display: inline-block;
+				min-width: 180px; max-width: 200px;
+				margin: 0 15px 15px;
+				padding: 0;
+			}
+
+			footer {
+				position: absolute;
+				bottom: 0; left: 0; right: 0;
+				padding: 5px;
+				background-color: $brand-purple;
+				color: $brand-white;
+
+				font-size: .8rem;
+				line-height: 2rem;
+
+				text-align: right;
+
+				p {
+					font-weight: 300;
+					margin: 0;
+					text-align: right;
+					display: inline-block;
+					margin-right: 1rem;
+
+					.long, .medium {
+						display: none;
+					}
+				}
+				.btn {
+					display: inline-block;
+					width: auto; min-width: 0; max-width: auto;
+					line-height: 2rem;
+					margin: 0;
+					padding: 0 5px;
+				}
+			}
+
+
+		}
+	}
+	
+	.view-header {
+		background-color: $brand-purple;
+		color: $brand-white;
+
+		position: fixed;
+		z-index: 4;
+		top: 0; left: 0; right: 0;
+		padding: 10px;
+
+		.logo-link {
+			width: 150px;
+			margin: 0;
+
+			@include aspect-ratio(1000, 340);
+
+			&:after {
+				background-image: url(../img/logos/logo_white.png);
+			}	
+		}
+	}
+}
+
+@include breakpoint(md) {
+	.app-view {
+		&.home-view {
+			.content-wrap {
+				background-color: rgba($brand-white, 0.35);
+				.logo-link {
+					margin: 0 auto 30px;
+				}
+				.content {
+					background-color: rgba($brand-white, 0.6);
+					padding: 15px 15px 0;
+					box-sizing: border-box;
+
+					width: 90vw;
+					min-width: 300px; max-width: 600px;
+				}
+
+				footer {
+					p {
+						.medium { display: inline; }
+					}					
+				}
+			}
+		}
+	}
+}
+
+@include breakpoint(home-lg){
+	.app-view {
+		&.home-view {
+			.background-photo {
+				position: absolute;
+				top: 0; bottom: 0;
+				right: 0; left: 30%;
+
+				background-position: 100% 50% !important;
+				img {
+					display: none;
+				}
+			}
+			.content-wrap {
+
+				.content {
+					position: absolute;
+					top: 0; bottom: 0;
+					left: 0; right: 50%;
+					z-index: 2;
+
+					margin: 0;
+					transform: none;
+					min-width: none; 
+					max-width: none;
+					width: auto;
+
+					padding: 30px;
+
+					clip-path: polygon(0 0, 75% 0%, 100% 100%, 0% 100%);
+
+					color: $brand-white;
+					background-color: $brand-purple;
+
+					.logo-link {
+						width: 65%;
+						max-width: 400px;
+						min-width: 200px;
+						margin: 0 0 3rem;
+
+						&:after {
+							background-image: url(../img/logos/logo_white.png);
+						}
+					}
+
+					p {
+						text-align: left;
+						margin: 0 0 .5rem;
+						padding: 0;
+						font-weight: 300;
+						width: 86%;
+
+						&.lead-in {
+							font-size: 2rem;
+							margin: 0 0 3rem;
+							font-weight: 600;
+							width: 82%;
+							max-width: 525px;
+						}
+					}
+
+					.btn {
+						max-width: 210px;
+						min-width: 180px;
+						display: block;
+						float: left;
+						box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.5);
+						margin: .25rem 1rem .5rem 0;	
+					}
+
+					.inner-content {
+						position: absolute;
+						top: 50%; left: 30px; right: 0; 
+						transform: translateY(-50%);
+						z-index: 3;
+					}
+				}
+
+				footer {
+					top: auto; left: 30px; bottom: 30px; right: auto;
+					background-color: transparent;
+					z-index: 2;
+
+					max-width: 40%;
+					margin: 0; padding: 0;
+
+					p {
+						text-align: left;
+						line-height: 1.3;
+						font-size: 1rem;
+
+						.long { display: inline; }
+					}
+
+					.btn {
+						display: block;
+						float: none;
+					}
+				}
+			}
+			.content {
+				
+
+				p {
+					width: 80%;
+				}
+
+				
+
+				footer {
+					position: absolute;
+					bottom: 30px; left: 30px;
+				}
+			}
+		}
+
+	}
+}

@@ -1,0 +1,49 @@
+html, body {
+	padding: 0; margin: 0;
+}
+
+.btn-white {
+	background-color: $brand-white;
+	color: $brand-purple;
+
+	&:hover, &:active {
+		background-color: lighten($brand-green, 55%);
+	}
+}
+
+a.white {
+	color: $brand-white;
+
+	&:hover, &:active {
+		color: lighten($brand-green, 55%);
+	}
+}
+
+.logo-link {
+	text-indent: -9999em;
+	display: block;
+	margin: 0; padding: 0;
+	
+
+	&:after {
+		background-repeat: no-repeat;
+		background-position: 0 0;
+		background-size: contain;
+		content: '';
+	}
+}
+
+#app-wrapper {
+	position: relative;
+	min-height: 100vh;
+	padding: 0; margin: 0;
+
+	.btn-two-line {
+		padding: .4rem;
+		box-sizing: border-box;
+		small {
+			line-height: 1;
+		}
+		line-height: 1.1;
+	}
+}

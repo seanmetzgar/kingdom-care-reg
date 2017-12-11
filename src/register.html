@@ -1,0 +1,546 @@
+<header class="view-header">
+    <a class="logo-link" href="/"><span>Kingdom Care</span></a>
+</header>
+
+<form action="submission.php" method="POST">
+    <!-- BEGIN: Step 1 -->
+    <section class="registration-form-view container step-1" data-form-step="1">            
+        <div class="form-light">
+            <!--Form without header-->
+            <div class="card">
+
+                <div class="card-body mx-4">
+
+                    <!--Header-->
+                    <div class="text-center">
+                        <h3 class="pink-text mb-5"><strong>Let's get started...</strong></h3>
+                    </div>
+
+                    <!--Body-->
+                    <div class="row">
+                        <div class="md-form col-md">
+                            <input type="email" id="form-email" class="form-control required" name="email">
+                            <label for="form-email" data-error="Invalid email">What's your email address?</label>
+                        </div>
+
+                        <div class="md-form col-md">
+                            <input type="password" id="form-password" class="form-control required" name="password">
+                            <label for="form-password">Choose a password</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="md-form col-md">
+                            <input type="text" id="form-first-name" class="form-control required" name="first-name">
+                            <label for="form-first-name">First Name</label>
+                        </div>
+
+                        <div class="md-form col-md">
+                            <input type="text" id="form-last-name" class="form-control required" name="last-name">
+                            <label for="form-last-name">Last Name</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="md-form col-md">
+                            <input type="text" id="form-street-address-1" class="form-control required" name="street-address-1">
+                            <label for="form-street-address-1">Street Address</label>
+                        </div>
+
+                        <div class="md-form col-md">
+                            <input type="text" id="form-street-address-2" class="form-control required" name="street-address-2">
+                            <label for="form-street-address-2">Street Address 2</label>
+                        </div>
+
+                        <div class="md-form col-lg">
+                            <input type="text" id="form-zip-code" class="form-control required" name="zip-code">
+                            <label for="form-zip-code">Zip Code</label>
+                        </div>
+                    </div>
+
+                    <!--Grid row-->
+                    <div class="row d-flex justify-content-center mb-4">
+
+                        <!--Grid column-->
+                        <div class="col-md-3 col d-sm-flex text-center">
+                            <button type="button" class="btn btn-primary btn-block btn-rounded z-depth-1 btn-next">Next</button>
+                        </div>
+                        <!--Grid column-->
+
+                    </div>
+                    <!--Grid row-->
+                </div>
+                
+            </div>
+            <!--/Form without header-->
+        </div>           
+    </section>
+    <!-- END: Step 1 -->
+
+    <!-- BEGIN: Step 2 -->
+    <section class="registration-form-view container step-2" data-form-step="2">            
+        <div class="form-light">
+            <!--Form without header-->
+            <div class="card">
+
+                <div class="card-body mx-4">
+
+                    <!--Header-->
+                    <div class="text-center">
+                        <h3 class="pink-text mb-5"><strong>Tell us about yourself</strong></h3>
+                    </div>
+
+                    <!--Body-->
+                    <div class="row">
+                        <div class="md-form col-md">
+                            <textarea name="about" id="form-about" class="md-textarea"></textarea>
+                            <label for="form-about">About you</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="md-form col-md">
+                            <textarea name="journey" id="form-journey" class="md-textarea"></textarea>
+                            <label for="form-journey">Your journey with Christ</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="md-form col-md">
+                            <input type="text" id="form-song" class="form-control" name="song">
+                            <label for="form-song">Favorite Hymn or Song</label>
+                        </div>
+
+                        <div class="md-form col-md">
+                            <input type="text" id="form-verse" class="form-control" name="verse">
+                            <label for="form-verse">Favorite Bible Verse</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="md-form col-md">
+                            <input type="text" id="form-birth-month" class="form-control mdb-autocomplete" name="birth-month">
+                            <button class="mdb-autocomplete-clear">
+                                <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="https://www.w3.org/2000/svg">
+                                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                                    <path d="M0 0h24v24H0z" fill="none" />
+                                </svg>
+                            </button>
+                            <label for="form-birth-month" class="active">Month</label>
+                        </div>
+
+                        <div class="md-form col-md">
+                            <input type="text" id="form-birth-day" class="form-control mdb-autocomplete" name="birth-day">
+                            <button class="mdb-autocomplete-clear">
+                                <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="https://www.w3.org/2000/svg">
+                                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                                    <path d="M0 0h24v24H0z" fill="none" />
+                                </svg>
+                            </button>
+                            <label for="form-birth-day" class="active">Day</label>
+                        </div>
+
+                        <div class="md-form col-md">
+                            <input type="text" id="form-birth-year" class="form-control mdb-autocomplete" name="birth-year">
+                            <button class="mdb-autocomplete-clear">
+                                <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="https://www.w3.org/2000/svg">
+                                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                                    <path d="M0 0h24v24H0z" fill="none" />
+                                </svg>
+                            </button>
+                            <label for="form-birth-year" class="active">Year</label>
+                        </div>
+                    </div>
+
+                    <!--Grid row-->
+                    <div class="row d-flex justify-content-center mb-4">
+
+                        <!--Grid column-->
+                        <div class="col-md-3 col d-sm-flex text-center">
+                            <button type="button" class="btn btn-secondary btn-block btn-rounded z-depth-1 btn-prev">Previous</button>
+                        </div>
+                        <!--Grid column-->
+
+                        <!--Grid column-->
+                        <div class="col-md-3 col d-sm-flex text-center">
+                            <button type="button" class="btn btn-primary btn-block btn-rounded z-depth-1 btn-next">Next</button>
+                        </div>
+                        <!--Grid column-->
+
+                    </div>
+                    <!--Grid row-->
+                </div>
+
+            </div>
+            <!--/Form without header-->
+        </div>           
+    </section>
+    <!-- END: Step 2 -->
+
+    <!-- BEGIN: Step 3 -->
+    <section class="registration-form-view container step-3" data-form-step="3">            
+        <div class="form-light">
+            <!--Form without header-->
+            <div class="card">
+
+                <div class="card-body mx-4">
+
+                    <!--Header-->
+                    <div class="text-center">
+                        <h3 class="pink-text mb-5"><strong>Ok... let's get down to business</strong></h3>
+                    </div>
+
+                    <!--Body-->
+                    <h5><strong>Do you have experience with...</strong></h5>
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6 form-group">
+                            <input type="checkbox" id="form-newborn-experience" name="newborn-experience">
+                            <label for="form-newborn-experience">Newborns<br><small>(0-3 months)</small></label>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 form-group">
+                            <input type="checkbox" id="form-infant-experience" name="infant-experience">
+                            <label for="form-infant-experience">Infants<br><small>(3-12 months)</small></label>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 form-group">
+                            <input type="checkbox" id="form-toddler-experience" name="toddler-experience">
+                            <label for="form-toddler-experience">Toddlers<br><small>(1-3 years)</small></label>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 form-group">
+                            <input type="checkbox" id="form-youngchild-experience" name="youngchild-experience">
+                            <label for="form-youngchild-experience">Young Children<br><small>(3-9 years)</small></label>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 form-group">
+                            <input type="checkbox" id="form-preteen-experience" name="preteen-experience">
+                            <label for="form-preteen-experience">Pre-teens<br><small>(9-12 years)</small></label>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 form-group">
+                            <input type="checkbox" id="form-teen-experience-experience" name="teen-experience">
+                            <label for="form-teen-experience">Teens<br><small>(12-16 years)</small></label>
+                        </div>
+
+                        <div class="col-12 md-form">
+                            <input type="text" id="form-other-experience" name="other-experience">
+                            <label for="form-other-experience">Other experience</label>
+                        </div>  
+                    </div>
+
+                    <h5><strong>Any experience with children with special needs?</strong></h5>
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6 form-group">
+                            <input type="checkbox" id="form-autism-experience" name="autism-experience">
+                            <label for="form-autism-experience">Autism</label>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 form-group">
+                            <input type="checkbox" id="form-downsyndrome-experience" name="downsyndrome-experience">
+                            <label for="form-downsyndrome-experience">Down Syndrome</label>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 form-group">
+                            <input type="checkbox" id="form-deaf-experience" name="deaf-experience">
+                            <label for="form-deaf-experience">Deaf</label>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 form-group">
+                            <input type="checkbox" id="form-blind-experience" name="blind-experience">
+                            <label for="form-blind-experience">Blind</label>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 form-group">
+                            <input type="checkbox" id="form-cp-experience" name="cp-experience">
+                            <label for="form-cp-experience">Cerebral Palsy</label>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 form-group">
+                            <input type="checkbox" id="form-pd-experience" name="pd-experience">
+                            <label for="form-pd-experience">Physical Disability</label>
+                        </div>
+
+                        <div class="col-12 md-form">
+                            <input type="text" id="form-other-special-experience" name="other-special-experience">
+                            <label for="form-other-special-experience">Other special needs</label>
+                        </div>  
+                    </div>
+
+                    <h5><strong>Do you have any certifications?</strong></h5>
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6 form-group">
+                            <input type="checkbox" id="form-cpr-certification" name="cpr-certification">
+                            <label for="form-cpr-certification">CPR</label>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 form-group">
+                            <input type="checkbox" id="form-firstaid-certification" name="firstaid-certification">
+                            <label for="form-firstaid-certification">First Aid</label>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 form-group">
+                            <input type="checkbox" id="form-lifeguard-certification" name="lifeguard-certification">
+                            <label for="form-lifeguard-certification">Lifeguard</label>
+                        </div>
+
+                        <div class="col-12 md-form">
+                            <input type="text" id="form-other-certification" name="other-certification">
+                            <label for="form-other-certification">Other certifications</label>
+                        </div>                             
+                    </div>
+
+                    <h5><strong>Let's talk languages...</strong></h5>
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6 form-group">
+                            <input type="checkbox" id="form-speak-english" name="speak-english">
+                            <label for="form-speak-english">English</label>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 form-group">
+                            <input type="checkbox" id="form-speak-spanish" name="speak-spanish">
+                            <label for="form-speak-spanish">Spanish</label>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 form-group">
+                            <input type="checkbox" id="form-speak-french" name="speak-french">
+                            <label for="form-speak-french">French</label>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 form-group">
+                            <input type="checkbox" id="form-speak-mandarin" name="speak-mandarin">
+                            <label for="form-speak-mandarin">Mandarin</label>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 form-group">
+                            <input type="checkbox" id="form-speak-japanese" name="speak-japanese">
+                            <label for="form-speak-japanese">Japanese</label>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 form-group">
+                            <input type="checkbox" id="form-speak-asl" name="speak-asl">
+                            <label for="form-speak-asl">Sign Language</label>
+                        </div>
+
+                        <div class="col-12 md-form">
+                            <input type="text" id="form-other-languages" name="other-languages">
+                            <label for="form-other-languages">Other languages</label>
+                        </div>                             
+                    </div>
+
+                    <h5><strong>Are you cool with...</strong></h5>
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6 form-group">
+                            <input type="checkbox" id="form-cat-friendly" name="cat-friendly">
+                            <label for="form-cat-friendly">Cats</label>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 form-group">
+                            <input type="checkbox" id="form-dog-friendly" name="dog-friendly">
+                            <label for="form-dog-friendly">Dogs</label>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 form-group">
+                            <input type="checkbox" id="form-bird-friendly" name="bird-friendly">
+                            <label for="form-bird-friendly">Birds</label>
+                        </div>
+
+                        <div class="col-12 md-form">
+                            <input type="text" id="form-uncool-animals" name="uncool-animals">
+                            <label for="form-uncool-animals">Any animals you're NOT OKAY with?</label>
+                        </div>                             
+                    </div>
+
+                    <h5><strong>Willing to do the extra mile?</strong></h5>
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6 form-group">
+                            <input type="checkbox" id="form-cooking-service" name="cooking-service">
+                            <label for="form-cooking-service">Cooking</label>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 form-group">
+                            <input type="checkbox" id="form-dishes-service" name="dishes-service">
+                            <label for="form-dishes-service">Dishes</label>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 form-group">
+                            <input type="checkbox" id="form-laundry-service" name="laundry-service">
+                            <label for="form-laundry-service">Laundry</label>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 form-group">
+                            <input type="checkbox" id="form-dusting-service" name="dusting-service">
+                            <label for="form-dusting-service">Dusting</label>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 form-group">
+                            <input type="checkbox" id="form-vacuum-service" name="vacuum-service">
+                            <label for="form-vacuum-service">Vacuuming</label>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 form-group">
+                            <input type="checkbox" id="form-pets-service" name="pets-service">
+                            <label for="form-pets-service">Pets</label>
+                        </div>
+
+                        <div class="col-12 md-form">
+                            <input type="text" id="form-other-services" name="other-services">
+                            <label for="form-other-services">Any other services?</label>
+                        </div>                             
+                    </div>
+
+                                            
+
+                    <!--Grid row-->
+                    <div class="row d-flex justify-content-center mb-4">
+
+                        <!--Grid column-->
+                        <div class="col-md-3 col d-sm-flex text-center">
+                            <button type="button" class="btn btn-secondary btn-block btn-rounded z-depth-1 btn-prev">Previous</button>
+                        </div>
+                        <!--Grid column-->
+
+                        <!--Grid column-->
+                        <div class="col-md-3 col d-sm-flex text-center">
+                            <button type="button" class="btn btn-primary btn-block btn-rounded z-depth-1 btn-next">Next</button>
+                        </div>
+                        <!--Grid column-->
+
+                    </div>
+                    <!--Grid row-->
+                </div>
+                
+            </div>
+            <!--/Form without header-->
+        </div>           
+    </section>
+    <!-- END: Step 3 -->
+
+    <!-- BEGIN: Step 4 -->
+    <section class="registration-form-view container step-4" data-form-step="4">            
+        <div class="form-light">
+            <!--Form without header-->
+            <div class="card">
+
+                <div class="card-body mx-4">
+
+                    <!--Header-->
+                    <div class="text-center">
+                        <h3 class="mb-5"><strong>Let's talk $$$</strong></h3>
+                    </div>
+
+                    <!--Body-->
+                    <div class="row justify-content-center">
+                        <div class="col-md-4 col-sm-6">
+                            <select class="mdb-select" name="payment-structure" id="form-payment-structure">
+                                <option value="" disabled selected>Choose your option</option>
+                                <option value="hourly-rate">Flat Rate</option>
+                                <option value="sliding-scale">Based on # of children</option>
+                                <option value="age-scale">Based on AGE of children</option>
+                            </select>
+                            <label for="form-payment-structure">How do you typically charge?</label>
+                        </div>
+                    </div>
+
+                    <div class="payment-rate-form" id="payment-hourly-rate">
+                        <div class="row justify-content-center">
+                            <div class="col-md-4 col-sm-6 md-form">
+                                <input type="text" id="form-hourly-rate" name="hourly-rate">
+                                <label for="form-hourly-rate">How much per hour?</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="payment-rate-form" id="payment-sliding-scale">
+                        <div class="row justify-content-center">
+                            <div class="col-md-4 col-sm-6 md-form">
+                                <input type="text" id="form-child1-rate" name="child1-rate">
+                                <label for="form-child1-rate">1 child</label>
+                            </div>
+
+                            <div class="col-md-4 col-sm-6 md-form">
+                                <input type="text" id="form-child2-rate" name="child2-rate">
+                                <label for="form-child2-rate">2 children</label>
+                            </div>
+
+                            <div class="col-md-4 col-sm-6 md-form">
+                                <input type="text" id="form-child3-rate" name="child3-rate">
+                                <label for="form-child3-rate">3 children</label>
+                            </div>
+
+                            <div class="col-md-4 col-sm-6 md-form">
+                                <input type="text" id="form-child4-rate" name="child4-rate">
+                                <label for="form-child4-rate">4 children</label>
+                            </div>
+
+                            <div class="col-md-4 col-sm-6 md-form">
+                                <input type="text" id="form-child5-rate" name="child5-rate">
+                                <label for="form-child5-rate">5 children</label>
+                            </div>
+
+                            <div class="col-md-4 col-sm-6 md-form">
+                                <input type="text" id="form-child6-rate" name="child6-rate">
+                                <label for="form-child6-rate">6 children</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="payment-rate-form" id="payment-age-scale">
+                        <div class="row justify-content-center">
+                            <div class="col-md-4 col-sm-6 md-form">
+                                <input type="text" id="form-newborn-rate" name="newborn-rate">
+                                <label for="form-newborn-rate">Newborn</label>
+                            </div>
+
+                            <div class="col-md-4 col-sm-6 md-form">
+                                <input type="text" id="form-infant-rate" name="infant-rate">
+                                <label for="form-infant-rate">Infant</label>
+                            </div>
+
+                            <div class="col-md-4 col-sm-6 md-form">
+                                <input type="text" id="form-toddler-rate" name="toddler-rate">
+                                <label for="form-toddler-rate">Toddler</label>
+                            </div>
+
+                            <div class="col-md-4 col-sm-6 md-form">
+                                <input type="text" id="form-youngchild-rate" name="youngchild-rate">
+                                <label for="form-youngchild-rate">Young Child</label>
+                            </div>
+
+                            <div class="col-md-4 col-sm-6 md-form">
+                                <input type="text" id="form-preteen-rate" name="preteen-rate">
+                                <label for="form-preteen-rate">Pre-teen</label>
+                            </div>
+
+                            <div class="col-md-4 col-sm-6 md-form">
+                                <input type="text" id="form-teen-rate" name="teen-rate">
+                                <label for="form-teen-rate">Teen</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Grid row-->
+                    <div class="row d-flex justify-content-center mb-4">
+
+                        <!--Grid column-->
+                        <div class="col-md-3 col d-sm-flex text-center">
+                            <button type="button" class="btn btn-secondary btn-block btn-rounded z-depth-1 btn-prev">Previous</button>
+                        </div>
+                        <!--Grid column-->
+
+                        <!--Grid column-->
+                        <div class="col-md-3 col d-sm-flex text-center">
+                            <button type="submit" class="btn btn-primary btn-block btn-rounded z-depth-1 btn-save">Save</button>
+                        </div>
+                        <!--Grid column-->
+
+                    </div>
+                    <!--Grid row-->
+                </div>
+                
+            </div>
+            <!--/Form without header-->
+        </div>           
+    </section>
+    <!-- END: Step 4 -->
+</form>
