@@ -1,9 +1,10 @@
 var leapYear = function(year) {
-  return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
-}
+  return ((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0);
+};
 
-var range = function (min, max, increment = 1) {
+var range = function (min, max, increment) {
 	var array = [];
+	increment = typeof increment === "number" && Number.isInteger(increment) ? increment : 1;
 	for (min = min; min <= max; min = min + increment) {
 		array.push(min.toString());
 	}
@@ -14,7 +15,7 @@ var log = function (msg) {
 	var host = window.location.hostname;
 
 	if (typeof msg !== "undefined" && (host.includes("dev.") || host.includes("localhost"))) {
-	    console.log(msg)
+	    console.log(msg);
 	} // Only log on local & dev
 };
 
@@ -59,6 +60,27 @@ var initForm = function() {
 		"value": 0
 	});
 
+	$("#form-travel-distance").slider({
+		"tooltip": "hide",
+		"ticks": [0, 5, 10, 15, 20],
+		"ticks_labels": ["0", "5", "10", "15", "20+"],
+		"value": 10
+	});
+
+	$("#form-transport-capacity").slider({
+		"tooltip": "hide",
+		"ticks": [0, 1, 2, 3, 4, 5, 6],
+		"ticks_labels": ["0", "1", "2", "3", "4", "5", "6+"],
+		"value": 0
+	});
+
+	$("#form-number-children").slider({
+		"tooltip": "hide",
+		"ticks": [1, 2, 3, 4, 5, 6],
+		"ticks_labels": ["1", "2", "3", "4", "5", "6+"],
+		"value": 1
+	});
+
 	$(".registration-form-view").find(".btn-prev").on("click", function (e) {
 		var $this = $(this);
 		var	$appView = $this.parents(".registration-form-view");
@@ -68,7 +90,7 @@ var initForm = function() {
 			currentFormStep = appView - 1;
 			$appView.hide(0);
 			$(".registration-form-view[data-form-step=" + currentFormStep + "]").show(0);
-			$("#form-years-experience").slider("relayout");
+			$("input[data-slider-id]").slider("relayout");
 		}
 	});
 
@@ -77,14 +99,22 @@ var initForm = function() {
 		var	$appView = $this.parents(".registration-form-view");
 		var appView = $appView.data("form-step");
 
-		if (appView < 4) {
+		if (appView < maxFormStep) {
 			currentFormStep = appView + 1;
 			$appView.hide(0);
 			$appView = $(".registration-form-view[data-form-step=" + currentFormStep + "]").show(0);
-			$("#form-years-experience").slider("relayout");
+			$("input[data-slider-id]").slider("relayout");
 		}
 	});
-}
+
+	$("#registration-form").on("submit", function(e) {
+		if (this.checkValidity() === false) {
+			e.preventDefault();
+			e.stopPropagation();
+		}
+		$(this).addClass("was-validated");
+	});
+};
 
 var updateBirthDay = function(month, year) {
 	var days = [];
@@ -118,9 +148,9 @@ var updateBirthDay = function(month, year) {
 		}
 
 	});
-}
+};
 
-var setView = function(view, id = null) {
+var setView = function(view, id) {
 	id = (typeof id === "string") ? id : null;
 
 	if (typeof view === "string" && id !== null) {
@@ -132,26 +162,28 @@ var setView = function(view, id = null) {
 		if (typeof viewsContent[view] !== "undefined") {
 			views[view].empty().load(viewsContent[view], function() {
 				currentFormStep = 1;
+				maxFormStep = parseInt($(".registration-form-view").last().data("form-step"));
 				initForm();
 				$(".registration-form-view[data-form-step=" + currentFormStep + "]").show(0);
 				$(this).fadeIn(); 
+				$("input[data-slider-id]").slider("relayout");
 			});
 		} else { views[view].fadeIn(); }
 	}
-}
+};
 
 var views = {
-		"register:sitter" : $(".app-view.sitter-registration"),
-		"register:parent" : $(".app-view.parent-registration"),
-		"register:thanks" : $(".app-view.thanks-registration"),
-		"register:error"  : $(".app-view.error-registration"),
-		"about"			  : $(".app-view.about"),
-		"home" : 			$(".app-view.home-view")
-	},
-	viewsContent= {
-		"register:sitter": "views/register-sitter.html",
-		"register:parent": "views/register-parent.html"
-	};
+	"register:sitter" : $(".app-view.sitter-registration"),
+	"register:parent" : $(".app-view.parent-registration"),
+	"register:thanks" : $(".app-view.thanks-registration"),
+	"register:error"  : $(".app-view.error-registration"),
+	"about"			  : $(".app-view.about"),
+	"home" : 			$(".app-view.home-view")
+},
+viewsContent= {
+	"register:sitter": "views/register-sitter.html",
+	"register:parent": "views/register-parent.html"
+};
 
 var selectData = {
 	"month" : {
@@ -173,6 +205,8 @@ var selectData = {
 };
 
 var currentFormStep = 1;
+var maxFormStep = null;
+var registration_form = null;
 
 $(document).ready(function () {
 	$(".oembed-field").on("change blur", function (e) {

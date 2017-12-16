@@ -116,6 +116,14 @@ $check-icon: $fa-var-check !default;
       }
     }
 
+    .was-validated &:invalid + label {
+      color: $brand-danger;
+      &::before {
+        background-color: $brand-danger;
+      }
+
+    }
+
   }
 
   &.checkbox-circle label::before{

@@ -61,20 +61,22 @@
 }
 
 //Slider Fix
-#form-years-experience-slider {
-	width: calc(100% - 20px) !important;
-	margin: 0 auto !important;
-	display: block;
+.slider.slider-horizontal {
 
-	.slider-tick-label-container {
-		margin-top: 0;
+	&.slider-horizontal {
+		width: calc(100% - 20px) !important;
+		margin: 0 auto !important;
+		display: block;
+
+		.slider-tick-label-container {
+			margin-top: 0;
+		}
 	}
-}
 
-.slider.slider-horizontal:hover,
-.slider.slider-vertical:hover { 
-	.tooltip.tooltip-main { 
-		opacity: 1 !important;
-		transform: translateX(-50%);
-	} 
+	&:hover {
+		.tooltip.tooltip-main {
+			opacity: 1 !important;
+			transform: translateX(-50%);
+		}
+	}
 }

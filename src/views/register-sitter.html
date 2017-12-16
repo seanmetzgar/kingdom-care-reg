@@ -2,7 +2,7 @@
     <a class="logo-link" href="/"><p class="visuallyhidden">Kingdom Care</p></a>
 </header>
 
-<form action="submission.php" method="POST">
+<form action="submission.php" method="POST" novalidate id="registration-form">
     <input type="hidden" name="user-type" value="sitter">
     <!-- BEGIN: Step 1 -->
     <section class="registration-form-view step-1" data-form-step="1">            
@@ -16,21 +16,21 @@
             <div class="row">
                 <fieldset class="col-md">
                     <div class="form-group">
-                        <input type="email" id="form-email" class="form-control required" name="email" placeholder="Email address">
+                        <input type="email" id="form-email" class="form-control required" name="email" placeholder="Email address" required>
                     </div>
 
                     <div class="form-group">
-                        <input type="password" id="form-password" class="form-control required" name="password" placeholder="Password">
+                        <input type="password" id="form-password" class="form-control required" name="password" placeholder="Password" required>
                     </div>
                 </fieldset>
 
                 <fieldset class="col-md">
                     <div class="form-group">
-                        <input type="text" id="form-first-name" class="form-control required" name="first-name" placeholder="First Name">
+                        <input type="text" id="form-first-name" class="form-control required" name="first-name" placeholder="First Name" required>
                     </div>
 
                     <div class="form-group">
-                        <input type="text" id="form-last-name" class="form-control required" name="last-name" placeholder="Last Name">
+                        <input type="text" id="form-last-name" class="form-control required" name="last-name" placeholder="Last Name" required>
                     </div>
                 </fieldset>
             </div>
@@ -41,7 +41,7 @@
                 <fieldset class="col-md mt-3">
                     <caption><strong>Address</strong></caption>
                     <div class="form-group">
-                        <input type="text" id="form-street-address-1" class="form-control required" name="street-address-1" placeholder="Address line 1">
+                        <input type="text" id="form-street-address-1" class="form-control required" name="street-address-1" placeholder="Address line 1" required>
                     </div>
 
                     <div class="form-group">
@@ -49,22 +49,22 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="text" id="form-zip-code" class="form-control required" name="zip-code" placeholder="Zip Code">
+                        <input type="text" id="form-zip-code" class="form-control required" name="zip-code" placeholder="Zip Code" required>
                     </div>
                 </fieldset>
 
                 <fieldset class="col-md mt-3">
                     <caption><strong>Date of Birth</strong></caption>
                     <div class="form-group">
-                        <select name="birth-month" id="form-birth-month" class="form-control" placeholder="Month"></select>
+                        <select name="birth-month" id="form-birth-month" class="form-control" placeholder="Month" required></select>
                     </div>
 
                     <div class="form-group">
-                        <select name="birth-day" id="form-birth-day" class="form-control"></select>
+                        <select name="birth-day" id="form-birth-day" class="form-control" required></select>
                     </div>
 
                     <div class="form-group">
-                        <select name="birth-year" id="form-birth-year" class="form-control"></select>
+                        <select name="birth-year" id="form-birth-year" class="form-control" required></select>
                     </div>
                 </fieldset>
             </div>
@@ -187,10 +187,59 @@
                         <textarea class="form-control" id="form-other-experience" name="other-experience" placeholder="Other experience"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="form-years-experience mb-0">Years of babysitting experience</label>
+                        <label for="form-years-experience">Years of babysitting experience</label>
                         <input id="form-years-experience" name="years-experience" data-slider-id="form-years-experience-slider" type="text">
                     </div>
-                </div>  
+                </div>
+            </div>
+        </div></div>
+
+        <div class="layout-block"><div class="container">
+            <h5><strong>Transportation &amp; Travel</strong></h5>
+            <div class="row">
+                <div class="col-md-6 mb-4"><div>
+                    <div class="checkbox checkbox-primary pl-0">
+                        <input type="checkbox" id="form-own-vehicle" name="own-vehicle">
+                        <label for="form-own-vehicle">I own a vehicle</small></label>
+                    </div>
+
+                    <div class="checkbox checkbox-primary pl-0">
+                        <input type="checkbox" id="form-drivers-license" name="drivers-license">
+                        <label for="form-drivers-license">I have a driver's license</small></label>
+                    </div>
+
+                    <div class="checkbox checkbox-primary pl-0">
+                        <input type="checkbox" id="form-willing-transport" name="willing-transport">
+                        <label for="form-willing-transport">I'm willing to transport children</small></label>
+                    </div>
+
+                    <div class="checkbox checkbox-primary pl-0">
+                        <input type="checkbox" id="form-infant-carseat" name="infant-carseat">
+                        <label for="form-infant-careseat">I have an infant carseat installed</small></label>
+                    </div>
+
+                    <div class="checkbox checkbox-primary pl-0">
+                        <input type="checkbox" id="form-toddler-carseat" name="toddler-carseat">
+                        <label for="form-toddler-careseat">I have a toddler carseat installed</small></label>
+                    </div>
+
+                    <div class="checkbox checkbox-primary pl-0">
+                        <input type="checkbox" id="form-careseat-installation" name="careseat-installation">
+                        <label for="form-careseat-installation">I have experience installing carseats</small></label>
+                    </div>
+                </div></div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="form-travel-distance">How many miles are you willing to travel for a job?</label>
+                        <input id="form-travel-distance" name="travel-distance" data-slider-id="form-travel-distance-slider" type="text">
+                    </div>
+
+                    <div class="form-group mt-5">
+                        <label for="form-transport-capacity">How many children can you transport in your vehicle?</label>
+                        <input id="form-transport-capacity" name="transport-capacity" data-slider-id="form-transport-capacity-slider" type="text">
+                    </div>
+                </div>
             </div>
         </div></div>
 
@@ -257,12 +306,12 @@
 
                 <div class="col-md-6 form-group d-flex align-items-stretch">
                     <textarea class="form-control" id="form-other-certification" name="other-certification" placeholder="Other certifications"></textarea>
-                </div>                             
+                </div>
             </div>
         </div></div>
 
         <div class="layout-block"><div class="container">
-            <h5 class="mt-4"><strong>Let's talk languages...</strong></h5>
+            <h5 class="mt-4"><strong>What languages do you know?</strong></h5>
             <div class="row d-flex align-items-stretch">
                 <div class="col-md-6"><div>
                     <div class="checkbox checkbox-primary checkbox-inline">
@@ -303,7 +352,7 @@
         </div></div>
 
         <div class="layout-block"><div class="container">
-            <h5 class="mt-4"><strong>Are you cool with...</strong></h5>
+            <h5 class="mt-4"><strong>Are you okay with...</strong></h5>
             <div class="row d-flex align-items-stretch">
                 <div class="col-md-6"><div>
                     <div class="checkbox checkbox-primary checkbox-inline">
@@ -329,7 +378,7 @@
         </div></div>
 
         <div class="layout-block"><div class="container">
-            <h5 class="mt-4"><strong>Willing to do the extra mile?</strong></h5>
+            <h5 class="mt-4"><strong>Willing to do anything else?</strong></h5>
             <div class="row d-flex align-items-stretch">
                 <div class="col-md-6"><div>
                     <div class="checkbox checkbox-primary checkbox-inline">
@@ -388,7 +437,7 @@
     <section class="registration-form-view step-4" data-form-step="4">            
         <!--Header-->
         <div class="text-center">
-            <h3 class="mb-5"><strong>Time to talk about money.</strong></h3>
+            <h3 class="mb-5"><strong>Payment Information</strong></h3>
         </div>
 
         <!--Body-->
@@ -482,10 +531,52 @@
                 </div>
 
                 <div class="col-md-3 col d-sm-flex text-center">
-                    <button type="submit" class="btn btn-primary btn-block btn-rounded z-depth-1 btn-next">Register</button>
+                    <button type="button" class="btn btn-primary btn-block btn-rounded z-depth-1 btn-next">Next</button>
                 </div>
             </div>
         </div></div>        
     </section>
     <!-- END: Step 4 -->
+
+    <!-- BEGIN: Step 5 -->
+    <section class="registration-form-view step-5" data-form-step="5">            
+        <!--Header-->
+        <div class="text-center">
+            <h3 class="mb-5"><strong>Let's wrap things up.</strong></h3>
+        </div>
+
+        <!--Body-->
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-6"><div>
+                <div class="checkbox checkbox-primary checkbox-inline">
+                    <input type="checkbox" id="form-agree-tos" name="agree-tos" required>
+                    <label for="form-agree-tos">Have you read, and accept the <a href="/#/documents/tos" target="_blank" class="docpop" data-doc="tos">Terms of Service</a>?</label>
+                    <div class="invalid-feedback">
+                        You must read &amp; accept the Terms of Service to register.
+                    </div>
+                </div>
+
+                <div class="checkbox checkbox-primary checkbox-inline">
+                    <input type="checkbox" id="form-agree-privacy" name="agree-privacy" required>
+                    <label for="form-agree-privacy">Have you read, and accept the <a href="/#/documents/privacy" target="_blank" class="docpop" data-doc="privacy">Privacy Policy</a>?</label>
+                    <div class="invalid-feedback">
+                        You must read &amp; accept the Privacy Policy to register.
+                    </div>
+                </div>
+            </div></div>
+        </div>
+
+        <div class="button-block"><div class="container">
+            <div class="row d-flex justify-content-center mb-4">
+                <div class="col-md-3 col d-sm-flex text-center">
+                    <button type="button" class="btn btn-secondary btn-block btn-rounded z-depth-1 btn-prev">Previous</button>
+                </div>
+
+                <div class="col-md-3 col d-sm-flex text-center">
+                    <button type="submit" class="btn btn-primary btn-block btn-rounded z-depth-1 btn-next">Register</button>
+                </div>
+            </div>
+        </div></div>        
+    </section>
+    <!-- END: Step 5 -->
 </form>

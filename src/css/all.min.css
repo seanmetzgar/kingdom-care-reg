@@ -7018,6 +7018,12 @@ a.text-dark:focus, a.text-dark:hover {
       .checkbox input[type="radio"]:disabled + label::before {
         background-color: #e9ecef;
         cursor: not-allowed; }
+    .was-validated .checkbox input[type="checkbox"]:invalid + label, .was-validated
+    .checkbox input[type="radio"]:invalid + label {
+      color: #B2413D; }
+      .was-validated .checkbox input[type="checkbox"]:invalid + label::before, .was-validated
+      .checkbox input[type="radio"]:invalid + label::before {
+        background-color: #B2413D; }
   .checkbox.checkbox-circle label::before {
     border-radius: 50%; }
   .checkbox.checkbox-inline {
@@ -7795,15 +7801,14 @@ a.white {
       content: '';
       display: block; }
 
-#form-years-experience-slider {
+.slider.slider-horizontal.slider-horizontal {
   width: calc(100% - 20px) !important;
   margin: 0 auto !important;
   display: block; }
-  #form-years-experience-slider .slider-tick-label-container {
+  .slider.slider-horizontal.slider-horizontal .slider-tick-label-container {
     margin-top: 0; }
 
-.slider.slider-horizontal:hover .tooltip.tooltip-main,
-.slider.slider-vertical:hover .tooltip.tooltip-main {
+.slider.slider-horizontal:hover .tooltip.tooltip-main {
   opacity: 1 !important;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%); }

@@ -12,6 +12,8 @@
 		public $zip_code = false;
 		public $type = false;
 		public $meta = false;
+		public $agree_tos = false;
+		public $agree_privacy = false;
 	}
 
 	class SitterMeta {
@@ -33,6 +35,15 @@
 		public $teen_experience = false;
 		public $other_experience = false;
 		public $years_experience = false;
+
+		public $own_vehicle = false;
+		public $drivers_license = false;
+		public $willing_transport = false;
+		public $infant_carseat = false;
+		public $toddler_carseat = false;
+		public $carseat_installation = false;
+		public $travel_distance = false;
+		public $transport_capacity = false;
 
 		public $autism_experience = false;
 		public $downsyndrom_experience = false;
@@ -119,12 +130,15 @@
 		$zip_code = trim($_REQUEST["zip-code"]);
 		$zip_code = strlen($zip_code) > 0 ? $zip_code : "";
 
+		$agree_tos = (isset($_REQUEST["agree-tos"]) && strlen($_REQUEST["agree-tos"]) > 0) ? true : false;
+		$agree_privacy = (isset($_REQUEST["agree-privacy"]) && strlen($_REQUEST["agree-privacy"]) > 0) ? true : false;
+
 		if (!$mysqli->connect_errno) {
 			if ($email && $password && $first_name && $last_name) {
 				$insert_statement = $mysqli->stmt_init();
-				if ($insert_statement->prepare("INSERT INTO `kcs_temp_users` (email, password, user_type, first_name, last_name, street_address_1, street_address_2, zip_code) VALUES (?, ?, ?, ?, ?, ?, ?, ?)")) {
+				if ($insert_statement->prepare("INSERT INTO `kcs_temp_users` (email, password, user_type, first_name, last_name, street_address_1, street_address_2, zip_code, agree_tos, agree_privacy) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
 					
-					if (!$insert_statement->bind_param("ssssssss", $email, $password, $type, $first_name, $last_name, $street_address_1, $street_address_2, $zip_code)) { $messages[] = "BIND-00"; }
+					if (!$insert_statement->bind_param("ssssssssii", $email, $password, $type, $first_name, $last_name, $street_address_1, $street_address_2, $zip_code, $agree_tos, $agree_privacy)) { $messages[] = "BIND-00"; }
 					if (!$insert_statement->execute()) { $messages[] = "EXEC-00"; }
 					
 

@@ -2,7 +2,7 @@
     <a class="logo-link" href="/"><p class="visuallyhidden">Kingdom Care</p></a>
 </header>
 
-<form action="submission.php" method="POST">
+<form action="submission.php" method="POST" novalidate id="registration-form">
     <input type="hidden" name="user-type" value="parent">
     <!-- BEGIN: Step 1 -->
     <section class="registration-form-view step-1" data-form-step="1">            
@@ -16,21 +16,21 @@
             <div class="row">
                 <fieldset class="col-md">
                     <div class="form-group">
-                        <input type="email" id="form-email" class="form-control required" name="email" placeholder="Email address">
+                        <input type="email" id="form-email" class="form-control required" name="email" placeholder="Email address" required>
                     </div>
 
                     <div class="form-group">
-                        <input type="password" id="form-password" class="form-control required" name="password" placeholder="Password">
+                        <input type="password" id="form-password" class="form-control required" name="password" placeholder="Password" required>
                     </div>
                 </fieldset>
 
                 <fieldset class="col-md">
                     <div class="form-group">
-                        <input type="text" id="form-first-name" class="form-control required" name="first-name" placeholder="First Name">
+                        <input type="text" id="form-first-name" class="form-control required" name="first-name" placeholder="First Name" required>
                     </div>
 
                     <div class="form-group">
-                        <input type="text" id="form-last-name" class="form-control required" name="last-name" placeholder="Last Name">
+                        <input type="text" id="form-last-name" class="form-control required" name="last-name" placeholder="Last Name" required>
                     </div>
                 </fieldset>
             </div>
@@ -38,13 +38,36 @@
 
         <div class="layout-block"><div class="container">
             <div class="row">
-                <div class="form-group col-md">
-                    <input type="text" id="form-zip-code" class="form-control required" name="zip-code" placeholder="Zip Code">
+                <div class="form-group col-md-6">
+                    <input type="text" id="form-zip-code" class="form-control required" name="zip-code" placeholder="Zip Code" required>
                 </div>
 
-                <div class="form-group col-md">
-                    <input type="text" id="form-number-children" class="form-control required" name="number-children" placeholder="How many children?">
+                <div class="form-group col-md-6">
+                    <label for="form-number-children">How many children?</label>
+                    <input id="form-number-children" name="number-children" data-slider-id="form-number-children-slider" type="text">
                 </div>
+            </div>
+        </div></div>
+
+        <div class="layout-block"><div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-6"><div>
+                    <div class="checkbox checkbox-primary checkbox-inline">
+                        <input type="checkbox" id="form-agree-tos" name="agree-tos" required>
+                        <label for="form-agree-tos">Have you read, and accept the <a href="/#/documents/tos" target="_blank" class="docpop" data-doc="tos">Terms of Service</a>?</label>
+                        <div class="invalid-feedback">
+                            You must read &amp; accept the Terms of Service to register.
+                        </div>
+                    </div>
+
+                    <div class="checkbox checkbox-primary checkbox-inline">
+                        <input type="checkbox" id="form-agree-privacy" name="agree-privacy" required>
+                        <label for="form-agree-privacy">Have you read, and accept the <a href="/#/documents/privacy" target="_blank" class="docpop" data-doc="privacy">Privacy Policy</a>?</label>
+                        <div class="invalid-feedback">
+                            You must read &amp; accept the Privacy Policy to register.
+                        </div>
+                    </div>
+                </div></div>
             </div>
         </div></div>
 
