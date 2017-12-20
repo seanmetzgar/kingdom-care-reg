@@ -62,6 +62,7 @@ var paths = {
             "./src/vendor/bootstrap-slider/js/bootstrap-slider.js"
         ],
         src:[
+            "./src/js/src/docpop.js",
             "./src/js/src/oembed.js",
             "./src/js/src/scripts.js",
             "./src/js/src/routes.js"

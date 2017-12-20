@@ -48,9 +48,9 @@
         	</div>
         </div>
 
-        <div class="app-view sitter-registration"></div>
+        <div class="app-view sitter-registration form-view"></div>
 
-        <div class="app-view parent-registration"></div>
+        <div class="app-view parent-registration form-view"></div>
 
         <div class="app-view thanks-registration">
         	<header class="view-header">
@@ -102,6 +102,18 @@
 				</div>
 			</div>
         </div>
+
+        <div class="app-view document"></div>
+
+        <footer>
+        	<nav>
+        		<a href="/">Home</a>
+        		<a href="/#/our-story">Our Story</a>
+        		<a href="/#/register/parent/">Parent Registration</a>
+        		<a href="/#/register/sitter">Sitter Registration</a>
+        	</nav>
+        	<p class="copyright">&copy; <?php echo date("Y"); ?> Kingdomcare, LLC. All Rights Reserved. | <a href="/#/document/terms">Terms of Service</a> | <a href="/#/document/privacy">Privacy Policy</a></p>
+        </footer>
     </div>
 
     <script type="text/javascript" src="js/all.js"></script>

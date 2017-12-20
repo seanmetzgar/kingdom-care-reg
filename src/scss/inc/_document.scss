@@ -1,0 +1,103 @@
+.document {
+	&.legal {
+		font-size: .85rem;
+	}
+
+	header {
+		text-align: center;
+		margin-bottom: 3rem;
+		.title {
+			line-height: 1;
+			margin: 0;
+			small {
+				display: block;
+			}
+		}
+		.meta {
+			margin: 0;
+		}
+	}
+	
+	.meta {
+		font-style: italic;
+		color: $brand-primary;
+	}
+
+	.important {
+		font-weight: 700;
+	}
+
+	u {
+		text-decoration: underline;
+	}
+
+	address {
+		font-style: italic;
+	}
+
+	ol {
+		counter-reset: list;
+		padding-left: 2rem;
+
+		> li {
+			list-style: none;
+			position: relative;
+
+			&:before {
+				content: counter(list, lower-alpha) ". ";
+				counter-increment: list;
+				position: absolute;
+				left: -2rem;
+				text-align: right;
+			}
+		}
+		&.upper-alpha {
+			> li {
+				&:before {
+					content: counter(list, upper-alpha) ". ";
+				}
+			}
+		}
+
+		&.upper-alpha.parens {
+			> li {
+				&:before {
+					content: "(" counter(list, upper-alpha) ") ";
+				}
+			}
+		}
+
+		&.lower-alpha {
+			> li {
+				&:before {
+					content: counter(list, lower-alpha) ". ";
+				}
+			}
+		}
+
+		&.lower-alpha.parens {
+			> li {
+				&:before {
+					content: "(" counter(list, lower-alpha) ") ";
+				}
+			}
+		}
+
+		&.numeric {
+			> li {
+				&:before {
+					content: counter(list) ". ";
+				}
+			}
+		}
+		
+		&.numeric.parens {
+			> li {
+				&:before {
+					content: "(" counter(list) ") ";
+				}
+			}
+		}
+	}
+}
+

@@ -161,28 +161,33 @@ var setView = function(view, id) {
 		$(".app-view").fadeOut();
 		if (typeof viewsContent[view] !== "undefined") {
 			views[view].empty().load(viewsContent[view], function() {
-				currentFormStep = 1;
-				maxFormStep = parseInt($(".registration-form-view").last().data("form-step"));
-				initForm();
-				$(".registration-form-view[data-form-step=" + currentFormStep + "]").show(0);
-				$(this).fadeIn(); 
-				$("input[data-slider-id]").slider("relayout");
+				if ($(this).hasClass("form-view")) {
+					currentFormStep = 1;
+					maxFormStep = parseInt($(".registration-form-view").last().data("form-step"));
+					initForm();
+					$(".registration-form-view[data-form-step=" + currentFormStep + "]").show(0);
+				}
+				$(this).fadeIn().find("input[data-slider-id]").slider("relayout");
 			});
 		} else { views[view].fadeIn(); }
 	}
 };
 
 var views = {
-	"register:sitter" : $(".app-view.sitter-registration"),
-	"register:parent" : $(".app-view.parent-registration"),
-	"register:thanks" : $(".app-view.thanks-registration"),
-	"register:error"  : $(".app-view.error-registration"),
-	"about"			  : $(".app-view.about"),
-	"home" : 			$(".app-view.home-view")
+	"register:sitter" 	: $(".app-view.sitter-registration"),
+	"register:parent" 	: $(".app-view.parent-registration"),
+	"register:thanks" 	: $(".app-view.thanks-registration"),
+	"register:error"  	: $(".app-view.error-registration"),
+	"document:terms"  	: $(".app-view.document"),
+	"document:privacy"	: $(".app-view.document"),
+	"about"			  	: $(".app-view.about"),
+	"home" 				: $(".app-view.home-view")
 },
 viewsContent= {
 	"register:sitter": "views/register-sitter.html",
-	"register:parent": "views/register-parent.html"
+	"register:parent": "views/register-parent.html",
+	"document:terms": "views/document-terms.html",
+	"document:privacy": "views/document-privacy.html"
 };
 
 var selectData = {
@@ -224,4 +229,6 @@ $(document).ready(function () {
 			includeHandle: false,
 		});		
 	});
+
+	docpop();
 });
