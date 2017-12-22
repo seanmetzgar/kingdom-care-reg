@@ -125,12 +125,6 @@ gulp.task("vendor:crossroads", function () {
         .on('error', gutil.log);
 });
 
-gulp.task("vendor:slideout", function () {
-    return pipe(gulp.src("./node_modules/slideout/dist/slideout.js"),
-        [gulp.dest("./src/vendor/slideout")])
-        .on('error', gutil.log);
-});
-
 gulp.task("vendor:popper", function () {
     return pipe(gulp.src("./node_modules/popper.js/dist/umd/popper.js"),
         [gulp.dest("./src/vendor/popper")])
@@ -138,7 +132,7 @@ gulp.task("vendor:popper", function () {
 });
 
 gulp.task("vendor:bootstrap:sass", function () {
-    return pipe(gulp.src(["./node_modules/bootstrap/scss/**/*.*", "!./node_modules/bootstrap/scss/_variables.scss", "./src/scss/inc/bootstrap/_variables.scss"]),
+    return pipe(gulp.src("./node_modules/bootstrap/scss/**/*.*"),
         [gulp.dest("./src/vendor/bootstrap/scss")])
         .on('error', gutil.log);
 });
@@ -161,16 +155,16 @@ gulp.task("vendor:bootstrap-slider:js", function () {
 
 //Build Tasks
 gulp.task("sass", ["move"], function () {
-    return pipe(gulp.src(paths.sass.vendor.concat(paths.sass.src)),
+    return pipe(gulp.src(paths.sass.src),
         [
-            sourcemaps.init(),
+            // sourcemaps.init(),
             sass().on('error', gutil.log),
             autoprefixer(),
             concat("all.css"),
             stripStyleComments({preserve: false}),
-            // cssmin(),
+            cssmin(),
             rename({suffix: '.min'}),
-            sourcemaps.write("./"),
+            // sourcemaps.write("./"),
             gulp.dest("./src/css")
         ])
         .on('error', gutil.log);
@@ -182,7 +176,7 @@ gulp.task("js", ["move"], function () {
             // sourcemaps.init(),
             concat("all.js"),
             stripComments(),
-            // uglify().on('error', gutil.log),
+            uglify().on('error', gutil.log),
             // sourcemaps.write("./"),
             gulp.dest("./src/js")
         ])

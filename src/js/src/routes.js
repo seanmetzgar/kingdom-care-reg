@@ -26,9 +26,9 @@ function parseHash(newHash, oldHash){
 }
 
 //only required if you want to set a default value
-if(! hasher.getHash()){
-    hasher.setHash(DEFAULT_HASH);
-}
+// if(! hasher.getHash()){
+//     hasher.setHash(DEFAULT_HASH);
+// }
 hasher.initialized.add(parseHash); //parse initial hash
 hasher.changed.add(parseHash); //parse hash changes
 

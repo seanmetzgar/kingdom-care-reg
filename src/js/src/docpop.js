@@ -1,4 +1,4 @@
-var docpop = (function() {
+var docpop = function() {
 	if (!$(".docpop-overlay, .docpop-container, .docpop-content").length) {
 		var body = $("body");
 		var overlay = $("<div></div>").appendTo(body).addClass("docpop-overlay");
@@ -26,4 +26,4 @@ var docpop = (function() {
 			content.empty();
 		});
 	}
-});
+};

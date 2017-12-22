@@ -114,6 +114,10 @@ var initForm = function() {
 		}
 		$(this).addClass("was-validated");
 	});
+
+	$(".image-preview").on("change", function() { 
+		readURL(this);
+	});
 };
 
 var updateBirthDay = function(month, year) {
@@ -152,6 +156,10 @@ var updateBirthDay = function(month, year) {
 
 var setView = function(view, id) {
 	id = (typeof id === "string") ? id : null;
+	var defaultViewTitle = "Kingdom Care";
+	var viewTitle = null;
+	var viewPath = hasher.getHash();
+	viewPath = viewPath.length > 0 ? "/#/" + viewPath : viewPath;
 
 	if (typeof view === "string" && id !== null) {
 		view = view + ":" + id;
@@ -170,7 +178,40 @@ var setView = function(view, id) {
 				$(this).fadeIn().find("input[data-slider-id]").slider("relayout");
 			});
 		} else { views[view].fadeIn(); }
+
+		viewTitle = (typeof viewsTitles[view] !== "undefined") ? viewsTitles[view] + " | " + defaultViewTitle : defaultViewTitle;
+		$("title").text(viewTitle);
+
+		gtag('config', 'UA-111431080-1', {'page_path': viewPath});
 	}
+};
+
+var readURL = function(input) {
+	var $input = $(input);
+	var allowedMimeTypes = ["image/jpeg", "image/png", "image/gif"];
+	var inputName = $input.attr("name");
+	var $preview = $("[data-for=" + inputName + "]");
+	var reader = null;
+ 	if (input.files && 
+  		input.files[0] && 
+  		input.files[0].type &&
+  		allowedMimeTypes.indexOf(input.files[0].type) !== -1
+  	) {
+
+  		$input.siblings(".custom-file-control").text(input.files[0].name);
+	    reader = new FileReader();	    
+	    
+	    if ($preview.length) {
+	    	reader.onload = function(e) {
+				$preview.empty();
+				$("<img>").appendTo($preview).attr('src', e.target.result);
+	    	}
+
+	    	reader.readAsDataURL(input.files[0]);
+	    }
+  	} else {
+  		$input.val("").siblings(".custom-file-control").empty();
+  	}
 };
 
 var views = {
@@ -188,7 +229,16 @@ viewsContent= {
 	"register:parent": "views/register-parent.html",
 	"document:terms": "views/document-terms.html",
 	"document:privacy": "views/document-privacy.html"
-};
+},
+viewsTitles= {
+	"register:sitter" 	: "Sitter Registration",
+	"register:parent" 	: "Parent Registration",
+	"register:thanks" 	: "Thank You",
+	"register:error"  	: "Error Registering",
+	"document:terms"  	: "Terms of Service",
+	"document:privacy"	: "Privacy Policy",
+	"about"			  	: "Our Story"
+}
 
 var selectData = {
 	"month" : {

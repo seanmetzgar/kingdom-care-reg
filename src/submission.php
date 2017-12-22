@@ -1,102 +1,53 @@
 <?php
 	require("inc/_inc_mysql.php");
+	require("inc/_inc_classes.php");
 
-	class User {
-		public $id = false;
-		public $email = false;
-		public $password = false;
-		public $first_name = false;
-		public $last_name = false;
-		public $street_address_1 = false;
-		public $street_address_2 = false;
-		public $zip_code = false;
-		public $type = false;
-		public $meta = false;
-		public $agree_tos = false;
-		public $agree_privacy = false;
-	}
+	function getFormUpload($field, $filename) {
+		$target_dir = "uploads/avatars/";
+		$target_file = false;
+		$mime_types = array("image/jpeg", "image/png", "image/gif");
+		$filetype = false;
+		
+		$uploadOK = true;
 
-	class SitterMeta {
-		public $about = false;
-		public $video_interview = false;
-		public $journey = false;
-		public $song = false;
-		public $verse = false;
-		public $denomination = false;
-		public $birth_month = false;
-		public $birth_day = false;
-		public $birth_year = false;
+		if ($_FILES[$field]["size"] > 6000000) {
+    		$uploadOK = false;
+		}
 
-		public $newborn_experience = false;
-		public $infant_experience = false;
-		public $toddler_experience = false;
-		public $youngchild_experience = false;
-		public $preteen_experience = false;
-		public $teen_experience = false;
-		public $other_experience = false;
-		public $years_experience = false;
+		if (!in_array($_FILES[$field]["type"], $mime_types)) {
+    		$uploadOk = false;
+		} else {
+			switch ($_FILES[$field]["type"]) {
+				case "image/jpeg":
+					$filetype = ".jpg";
+					break;
+				case "image/png":
+					$filetype = ".png";
+					break;
+				case "image/gif":
+					$filetype = ".gif";
+					break;					
+			}
 
-		public $own_vehicle = false;
-		public $drivers_license = false;
-		public $willing_transport = false;
-		public $infant_carseat = false;
-		public $toddler_carseat = false;
-		public $carseat_installation = false;
-		public $travel_distance = false;
-		public $transport_capacity = false;
+			if ($filetype) {
+				$target_file = $target_dir . md5($filename) . $filetype;
+			} else { $uploadOK = false; }
+		}
 
-		public $autism_experience = false;
-		public $downsyndrom_experience = false;
-		public $hearing_impaired_experience = false;
-		public $visually_impaired_experience = false;
-		public $cp_experience = false;
-		public $pd_experience = false;
-		public $other_special_experience = false;
+		if ($uploadOK) {
+			if(file_exists($target_file)) {
+    			chmod($target_file, 0755); //Change the file permissions if allowed
+    			unlink($target_file); //remove the file
+			}
 
-		public $cpr_certification = false;
-		public $firstaid_certification = false;
-		public $lifeguard_certification = false;
-		public $other_certification = false;
+			if (move_uploaded_file($_FILES[$field]["tmp_name"], $target_file)) {
+				$uploadOK = $target_file;
+			} else {
+				$uploadOK = false;
+			}
+		}
 
-		public $speak_english = false;
-		public $speak_spanish = false;
-		public $speak_french = false;
-		public $speak_mandarin = false;
-		public $speak_japanese = false;
-		public $speak_asl = false;
-		public $other_languages = false;
-
-		public $dog_friendly = false;
-		public $cat_friendly = false;
-		public $bird_friendly = false;
-		public $uncool_animals = false;
-
-		public $cooking_service = false;
-		public $dishes_service = false;
-		public $laundry_service = false;
-		public $dusting_service = false;
-		public $vacuum_service = false;
-		public $pets_service = false;
-		public $other_services = false;
-
-		public $payment_structure = false;
-		public $hourly_rate = false;
-		public $child1_rate = false;
-		public $child2_rate = false;
-		public $child3_rate = false;
-		public $child4_rate = false;
-		public $child5_rate = false;
-		public $child6_rate = false;
-		public $newborn_rate = false;
-		public $infant_rate = false;
-		public $toddler_rate = false;
-		public $youngchild_rate = false;
-		public $preteen_rate = false;
-		public $teen_rate = false;
-	}
-
-	class ParentMeta {
-		public $number_children = false;
+		return $uploadOK;
 	}
 
 	function createUser() {
@@ -133,6 +84,8 @@
 		$agree_tos = (isset($_REQUEST["agree-tos"]) && strlen($_REQUEST["agree-tos"]) > 0) ? true : false;
 		$agree_privacy = (isset($_REQUEST["agree-privacy"]) && strlen($_REQUEST["agree-privacy"]) > 0) ? true : false;
 
+		$avatar = (is_array($_FILES) && array_key_exists("avatar", $_FILES) && $_FILES["avatar"]["error"] == 0 && $email) ? getFormUpload("avatar", $email) : false;
+
 		if (!$mysqli->connect_errno) {
 			if ($email && $password && $first_name && $last_name) {
 				$insert_statement = $mysqli->stmt_init();
@@ -147,7 +100,18 @@
 					$insert_statement = null;
 
 					if (is_int($insert_id) && $insert_id > 0) {
+						if ($avatar) {
+							$avatar_insert_statement = $mysqli->stmt_init();
+							if ($avatar_insert_statement->prepare("INSERT INTO `kcs_temp_users_avatars` (user_id, avatar) VALUES (?, ?)")) {
+								if (!$avatar_insert_statement->bind_param("is", $insert_id, $avatar)) { $messages[] = "BIND-AVAT"; }
+								if (!$avatar_insert_statement->execute()) { $messages[] = "EXEC-AVAT"; }
+								$avatar_insert_statement->close();
+								$avatar_insert_statement = null;
+							} else { $messages[] = "PREP-AVAT"; }
+						}
+
 						$user_meta_fields = ($type == "sitter") ? new SitterMeta : new ParentMeta;
+
 						foreach($user_meta_fields as $key => $value) {
 							$sanitized_key = str_replace("_", "-", $key);
 							if (isset($_REQUEST[$sanitized_key]) && strlen($_REQUEST[$sanitized_key]) > 0) {
@@ -158,7 +122,7 @@
 									if (!$insert_statement2->execute()) { $messages[] = "EXEC-META"; }
 									$insert_statement2->close();
 									$insert_statement2 = null;
-								} else { $messages[] = "EXEC-PREP"; }
+								} else { $messages[] = "PREP-META"; }
 							}
 						}
 					} else { $messages[] = "INST-00"; }
@@ -190,7 +154,7 @@
 
 <body>
 	<div id="app-wrapper">
-        <div class="app-view error-registration">
+        <div class="app-view error-registration" style="display: block;">
         	<header class="view-header">
 			    <a class="logo-link" href="/"><h1 class="visuallyhidden">Kingdom Care</h1></a>
 			</header>
@@ -210,7 +174,5 @@
 			</div>
         </div>
     </div>
-
-    <script type="text/javascript" src="js/all.js"></script>
 </body>
 </html><?php endif; ?>

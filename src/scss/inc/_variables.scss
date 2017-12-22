@@ -1,6 +1,9 @@
+$font-family-serif: 		"Josefin Slab", serif;
+$font-family-sans-serif: 	"Josefin Sans", Helvetica, Arial, sans-serif;
+
 $brand-purple: 			#580F8C;
-$brand-dark-purple: 		#30084B;
-$brand-light-purple:		#8817D7;
+$brand-dark-purple: 	#30084B;
+$brand-light-purple:	#8817D7;
 $brand-blue: 			#3980B2;
 $brand-green: 			#2A7F71;
 $brand-yellow: 			#CC9623;
@@ -8,35 +11,58 @@ $brand-red:  			#B2413D;
 $brand-white:			#fff;
 $brand-black:			#000;
 
-$white:    				#fff;
-$gray-100: 				#f8f9fa;
-$gray-200: 				#e9ecef;
-$gray-300: 				#dee2e6;
-$gray-400: 				#ced4da;
-$gray-500: 				#adb5bd;
-$gray-600: 				#868e96;
-$gray-700: 				#495057;
-$gray-800: 				#343a40;
-$gray-900: 				#212529;
-$black:    				#000;
+$bg-purple:				lighten($brand-purple, 50%);
 
-$brand-primary:       		$brand-purple;
-$brand-secondary:     		$gray-600;
-$brand-success:       		$brand-green;
-$brand-info:          		$brand-blue;
-$brand-warning:       		$brand-yellow;
-$brand-danger:        		$brand-red;
-$brand-light:         		$gray-100;
-$brand-dark:          		$gray-800;
+/** Bootstrap Variables **/
+$blue:    $brand-blue;
+$indigo:  $brand-dark-purple;
+$purple:  $brand-purple;
+$red:     $brand-red;
+$yellow:  $brand-yellow;
+$green:   $brand-green;
 
-$input-bg: 				$white;
-$input-disabled-bg: 	$gray-200;
-$input-color:       	$gray-700;
-$input-border-color:	$gray-400;
+$primary:       $purple;
+$success:       $green;
+$info:          $blue;
+$warning:       $yellow;
+$danger:        $red;
+
+
+$enable-rounded: false;
+
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: ($spacer * .25),
+  2: ($spacer * .5),
+  3: $spacer,
+  4: ($spacer * 1.5),
+  5: ($spacer * 3),
+  6: ($spacer * 4),
+  7: ($spacer * 5)
+);
+
+
+$link-hover-color: $indigo;
+
+$headings-font-family: $font-family-serif;
+
+$custom-file-text: (
+  placeholder: (
+    en: "Select a File..."
+  ),
+  button-label: (
+    en: "Browse"
+  )
+) !default;
+/** END Bootstrap Variables **/
+
+/** Checkboxes & Radios **/
 $input-check-focus-width:       .1rem;
-$input-check-focus-color:       rgba($brand-primary, .25);
+$input-check-focus-color:       rgba($primary, .25);
 $input-check-focus-box-shadow:  0 0 0 $input-check-focus-width $input-check-focus-color;
 
+/** Breakpoints **/
 $screen-xs: 			0;
 $screen-sm: 			576px;
 $screen-md: 			768px;
@@ -47,14 +73,30 @@ $font-family-serif: 		"Josefin Slab", serif;
 $font-family-sans-serif: 	"Josefin Sans", Helvetica, Arial, sans-serif;
 
 //Slider Variables
-$slider-primary: null !default;
-@if variable-exists(brand-primary) {
-  $slider-primary: $brand-primary;
-} @else {
-  $slider-primary: #0480BE !default;
-}
+$slider-primary: $primary;
 
 $slider-primary-top: $slider-primary;
 $slider-primary-bottom: darken($slider-primary, 5%);
 $slider-secondary-top: saturate(lighten($slider-primary, 58%), 20%);
 $slider-secondary-bottom: saturate(lighten($slider-primary, 53%), 2%);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

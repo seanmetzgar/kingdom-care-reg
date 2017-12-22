@@ -38,7 +38,7 @@
 		width: 2rem; height: 2rem;
 		
 		background-color: transparent;
-		color: $brand-primary;
+		color: theme-color("primary");
 
 		position: absolute;
 		top: 0; right: 0;

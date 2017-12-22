@@ -27,7 +27,7 @@
 
 .oembed-data {
 	@include aspect-ratio(16, 9);
-	background-color: lighten($brand-purple, 50%);
+	background-color: $bg-purple;
 	text-indent: -9999em;
 	font-size: 0; line-height: 0;
 
